@@ -1,0 +1,222 @@
+/* 1. ЗМІННІ КОЛЬОРІВ */
+:root {
+    --primary: #007AFF;
+    --bg: #F2F2F7;
+    --card: #FFFFFF;
+    --text-main: #1C1C1E;
+    --text-sec: #8E8E93;
+    --input-bg: #F2F2F7;
+    --input-focus: #E5E5EA;
+    --border: #E5E5EA;
+    --green: #34C759;
+    --red: #FF3B30;
+    --header-bg: rgba(255, 255, 255, 0.85);
+    --shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #000000;
+        --card: #1C1C1E;
+        --text-main: #FFFFFF;
+        --text-sec: #98989D;
+        --input-bg: #2C2C2E;
+        --input-focus: #3A3A3C;
+        --border: #2C2C2E;
+        --header-bg: rgba(28, 28, 30, 0.85);
+        --shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    padding-bottom: 40px;
+    -webkit-tap-highlight-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ЛОГОТИП */
+.gh-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    cursor: default;
+}
+
+.gh-logo-img {
+    width: 32px;
+    height: auto;
+}
+
+.gh-logo-text {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: -0.5px;
+    color: var(--text-main);
+}
+
+/* Header */
+.header {
+    background: var(--header-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 20px 20px 20px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.balance-label {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-sec);
+    font-weight: 600;
+}
+
+.balance-amount {
+    font-size: 36px;
+    font-weight: 800;
+    margin: 5px 0;
+    letter-spacing: -1px;
+    color: var(--text-main); /* За замовчуванням колір тексту теми */
+}
+
+/* Layout */
+.container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+/* Inputs */
+label {
+    display: block;
+    font-size: 13px;
+    color: var(--text-sec);
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.main-input {
+    width: 100%;
+    border: none;
+    background: var(--input-bg);
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-main);
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.main-input:focus {
+    background: var(--input-focus);
+    box-shadow: 0 0 0 2px rgba(0,122,255,0.3);
+}
+
+/* --- СІТКА ТАБЛИЦІ (4 КОЛОНКИ) --- */
+.col-header, .expense-row {
+    display: grid;
+    /* Налаштування ширини: 1.5 частини ім'я, решта по 1, залишок 0.8 */
+    grid-template-columns: 1.5fr 1fr 1fr 0.8fr; 
+    gap: 8px;
+    align-items: center;
+}
+
+.col-header {
+    font-size: 11px;
+    color: var(--text-sec);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding: 0 5px;
+    text-align: center;
+}
+.col-header div:first-child { text-align: left; }
+
+.expense-row {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+.expense-row:last-child { border-bottom: none; }
+
+.cat-name { 
+    font-weight: 600; 
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-input {
+    width: 100%;
+    border: none;
+    background: var(--input-bg);
+    color: var(--text-main);
+    padding: 8px 4px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+    outline: none;
+    transition: background 0.2s;
+}
+.mini-input:focus { background: var(--input-focus); }
+
+/* Цифра в рядку (Залишок) */
+.row-balance {
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.total-row {
+    margin-top: 20px; 
+    padding-top: 15px; 
+    border-top: 2px dashed var(--border); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.total-label { color: var(--text-sec); font-size: 14px; }
+.total-amount { font-size: 18px; font-weight: 700; color: var(--text-main); }
+
+.footer {
+    text-align: center; 
+    font-size: 12px; 
+    color: var(--text-sec); 
+    margin-top: 20px;
+    opacity: 0.5;
+}
+
+/* Утиліти */
+.text-green { color: var(--green); }
+.text-red { color: var(--red); }
+.text-gray { color: var(--text-sec); }
